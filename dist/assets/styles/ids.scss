@@ -1,0 +1,130 @@
+// TODO Tidy up + Comment
+#people {
+    header {
+        background: #FFF;
+        overflow: hidden;
+        position: relative;
+        border-bottom: 0.2rem solid $colA_low;
+        &,
+        th {
+            height: 3.5rem;
+        }
+        th {
+            .grp {
+                height: 100%;
+            }
+        }
+        .search {
+            display: block;
+            background: $colA;
+            color: white;
+        }
+        input,
+        button {
+            height: 100%;
+            width: 100%;
+            outline: 0;
+            // text-align: left;
+            padding-top: 0;
+            padding-bottom: 0;
+            border: 0;
+        }
+    }
+    [role="radiogroup"] {
+        input,
+        button {
+            text-align: left;
+        }
+    }
+    [role="search"] {
+        background: mix($colA, #FFF, 80%);
+        input {
+            background: $colA_hgh;
+            &::placeholder {
+                color: $colA_low;
+            }
+        }
+        .filter {
+            color: $colA_hgh;
+            background: transparent;
+        }
+        button {
+            color: $colA_low;
+        }
+    }
+    .toggle > [role="radiogroup"],
+    .toggle > [role="search"] {
+        transform: translateY(-100%);
+    }
+    [role="radiogroup"],
+    [role="search"] {
+        transform: translateY(0%);
+        transition: transform 200ms;
+        th:last-child > button {
+            width: 3.5rem;
+            position: absolute;
+            top: 0;
+            right: 0;
+            text-align: center;
+        }
+    }
+    header th:last-child,
+    [role="table"] td:last-child {
+        width: 7rem;
+        padding-right: 4rem;
+    }
+}
+
+#friends {
+    margin: 0 -1rem;
+    position: relative;
+    > div {
+        position: relative;
+        float: left;
+        width: 20%;
+        margin: 0 0 4rem;
+        background-size: cover;
+        background-position: center center;
+        &:before {
+            content: '';
+            float: left;
+            padding-top: 100%;
+        }
+        &:after {
+            content: '';
+            height: 100%;
+            width: 100%;
+            box-sizing: border-box;
+            position: absolute;
+            border: 1rem solid white;
+        }
+        > div {
+            border: 1rem solid transparent;
+        }
+        p {
+            background: white;
+            position: absolute;
+            padding: 0 1rem;
+            width: 100%;
+            box-sizing: border-box;
+            bottom: -4rem;
+            overflow: hidden;
+            span {
+                float: left;
+                width: 0;
+            }
+        }
+    }
+}
+
+#crumbs {
+    position: absolute;
+    margin-top: -5rem;
+}
+
+@media only screen and (max-width: 480px) {
+    #friends > div {
+        width: 33.33%;
+    }
+}
+
