@@ -1,0 +1,12 @@
+{
+	"folders":
+	[
+		{
+			"folder_exclude_patterns":
+			[
+				"node_modules"
+			],
+			"path": "/Users/robertstarbuck/Sites/angular2/show-people"
+		}
+	]
+}

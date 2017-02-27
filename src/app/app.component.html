@@ -1,0 +1,105 @@
+<div *ngIf="!selectedUser">
+
+	<div class="edge">
+		<h2>People List</h2>
+	</div>
+	<div id="people">
+		<sticky sticky-width="100%">
+			<div class="edge">
+				<header [ngClass]="{ 'toggle':!showSearch }">
+
+					<table role="radiogroup">
+						<thead>
+							<tr>
+								<th>
+									<button role="radio" class="glass- icn" (click)="sortBy('fullname')">
+										<span>Name</span>
+										<i class="material-icons">{{getIcon('fullname')}}</i>
+									</button>
+								</th>
+								<th>
+									<button role="radio" class="glass- icn" (click)="sortBy('email')">
+										<span>Email</span>
+										<i class="material-icons">{{getIcon('email')}}</i>
+									</button>
+								</th>
+								<th>
+									<div style="height:100%">
+										<button class="glass- icn" (click)="sortBy('gender')">
+											<i class="material-icons">wc</i>
+											<i class="material-icons">{{getIcon('gender')}}</i>
+										</button>
+									</div>
+
+									<button role="radio" (click)="showSearch=! showSearch;setFocus(nameFilter);" class="search icn">
+										<i class="material-icons">search</i>
+									</button>
+								</th>
+							</tr>
+						</thead>
+					</table>
+
+					<table role="search">
+						<thead>
+							<tr>
+								<th>
+									<input #nameFilter type="text" placeholder="Name" (keyup)="0">
+								</th>
+								<th>
+									<input #emailFilter type="email" placeholder="Email" (keyup)="0">
+								</th>
+								<th>
+									<div style="height:100%">
+										<button class="filter icn tt-center" (click)="genderToggle()">
+											{{genderFilter[0] || '*' }}
+										</button>
+									</div>
+
+									<!-- TODO Move logic out of template -->
+									<button (click)="nameFilter.value='' ;emailFilter.value='' ;genderFilter='' ;showSearch=! showSearch; " class="glass- icn">
+										<i class="material-icons">clear</i>
+									</button>
+								</th>
+							</tr>
+						</thead>
+					</table>
+
+				</header>
+			</div>
+		</sticky>
+		<div class="edge">
+			<div id="sticky-body">
+				<table role="table">
+					<tbody>
+						<!-- TODO split to lines, ide is inlining markup -->
+
+						<!-- IMPORTANT NOTE sort should be applied after filters -->
+						<!-- pointless to sort something that's going to be filtered -->
+
+						<tr *ngFor="let person of peopleSet | peopleFilter: nameFilter.value : emailFilter.value : genderFilter | peopleSorter: sort : ascend" (click)="selectedUser = person;scrollTop();">
+							<td>{{person.first_name}} {{person.last_name}}</td>
+							<td>{{person.email}}</td>
+							<td><span>{{person.gender}}</span></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div *ngIf="selectedUser" class="edge cf">
+	<div id="crumbs">
+		<button class="glass- nav- icn" (click)="selectedUser = undefined">
+			<i class="material-icons">keyboard_arrow_left</i> People List
+		</button>
+	</div>
+	<h2> {{selectedUser.first_name}} {{selectedUser.last_name}} <span class="ft0">{{selectedUser.email}}</span></h2>
+	<hr>
+	<h5>Friends of {{selectedUser.first_name}}…</h5>
+	<div id="friends" class="flt cf">
+		<div *ngFor="let friend of selectedUser.friends" [ngStyle]="{'background-image': 'url(' + friend.picture + ')'}">
+			<p class="_"><span>{{friend.first_name}} {{friend.last_name}}</span></p>
+		</div>
+	</div>
+</div>

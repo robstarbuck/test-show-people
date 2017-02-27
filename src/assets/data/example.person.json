@@ -1,0 +1,40 @@
+{
+  "id": 1,
+  "first_name": "Kelly",
+  "last_name": "James",
+  "email": "kjames0@t.co",
+  "gender": "Female",
+  "friends": [
+    {
+      "first_name": "Elizabeth",
+      "last_name": "Duncan",
+      "email": "eduncan0@europa.eu",
+      "picture": "http://dummyimage.com/161x212.bmp/5fa2dd/ffffff"
+    },
+    {
+      "first_name": "Nicole",
+      "last_name": "Peterson",
+      "email": "npeterson1@ucla.edu",
+      "picture": "http://dummyimage.com/214x169.png/5fa2dd/ffffff"
+    },
+    {
+      "first_name": "Craig",
+      "last_name": "Watson",
+      "email": "cwatson2@ustream.tv",
+      "picture": "http://dummyimage.com/197x187.png/cc0000/ffffff"
+    },
+    {
+      "first_name": "Earl",
+      "last_name": "Alvarez",
+      "email": "ealvarez3@sitemeter.com",
+      "picture": "http://dummyimage.com/182x136.bmp/cc0000/ffffff"
+    },
+    {
+      "first_name": "Maria",
+      "last_name": "Austin",
+      "email": "maustin4@flickr.com",
+      "picture": "http://dummyimage.com/121x143.bmp/5fa2dd/ffffff"
+    }
+  ]
+}
+
